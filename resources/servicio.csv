@@ -1,2 +1,3 @@
 ID,ID_USUARIO,ORIGEN,DESTINO,FECHA_SERVICIO,DURACION,VALOR,TAXI,ESTADO
-a38bbe5d-8894-4b5e-9370-9e75d457a630,861eb47e-241e-4106-9d88-d336e0776df5,callejón diagon,av siempre viva,20/09/2020 07:57:30,null,null,ABC123,Pendiente
+027cd67e-1500-4cd5-9ea3-c243b5d6dda3,423c9181-d422-4900-b534-06d7c2cec93f,callejón diagon,av siempre viva,20/09/2020 23:02:49,20,20000.0,ABC123,Cumplido
+5f86b597-0de6-4bb3-9984-223b019e4504,423c9181-d422-4900-b534-06d7c2cec93f,callejón diagon,av siempre viva,20/09/2020 11:23:06,null,null,ABC123,Pendiente

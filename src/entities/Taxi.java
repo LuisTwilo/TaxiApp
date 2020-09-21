@@ -22,7 +22,7 @@ public class Taxi {
         this.cedulaConductor = taxi[3];
         this.poliza = taxi[4];
         this.soat = taxi[5];
-        this.fechaVencimientoTecnoMecanica = DateUtils.convertirStringADate(taxi[6]);
+        this.fechaVencimientoTecnoMecanica = DateUtils.convertirStringADate(taxi[6], "dd/MM/yyyy");
     }
 
     public String[] taxiArreglo(){

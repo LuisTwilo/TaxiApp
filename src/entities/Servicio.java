@@ -3,8 +3,11 @@ package entities;
 
 import managers.TaxiManager;
 import managers.UsuarioManager;
+import utils.DateUtils;
 
+import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class Servicio {
@@ -13,25 +16,30 @@ public class Servicio {
     private String direccionOrigen;
     private String direccionDestino;
     private Date servicioFechaHora;
-    private Integer servicioDuracion;
+    private Long servicioDuracion;
     private Double servicioValor;
     private Taxi taxiPlaca;
-    private enum estadoServicio {
+    public enum estadoServicio {
         Pendiente, Cumplido, Cancelado
     }
     private String estado;
 
 
-    public Servicio(String[] servicio){
+    public Servicio(String[] servicio) throws ParseException {
         this.idServicio = servicio[0];
         this.usuario = UsuarioManager.obtenerUsuario(servicio[1]);
         this.direccionOrigen = servicio[2];
         this.direccionDestino = servicio[3];
-        this.servicioFechaHora = new Date();
-        //this.servicioDuracion;
-        //this.servicioValor = Double.valueOf(servicio[5]);
-        this.taxiPlaca = TaxiManager.obtenerTaxi(servicio[4]);
+        this.servicioFechaHora = DateUtils.convertirStringADate(servicio[4], "dd/MM/yyyy HH:mm:ss");//
+        this.taxiPlaca = TaxiManager.obtenerTaxi(servicio[7]);
         this.estado = estadoServicio.Pendiente.name();
+    }
+
+    public String[] servicioArreglo(){
+        String[] servicio = {this.idServicio, this.usuario.getIdUsuario(), this.direccionOrigen, this.direccionDestino,
+                DateUtils.DateAStringConFormato(this.servicioFechaHora, "dd/MM/yyyy HH:mm:ss"),
+                String.valueOf(this.servicioDuracion), String.valueOf(this.servicioValor), this.taxiPlaca.getPlaca(), this.estado};
+        return servicio;
     }
 
     public String getIdServicio() {
@@ -74,11 +82,11 @@ public class Servicio {
         this.servicioFechaHora = servicioFechaHora;
     }
 
-    public Integer getServicioDuracion() {
+    public Long getServicioDuracion() {
         return servicioDuracion;
     }
 
-    public void setServicioDuracion(Integer servicioDuracion) {
+    public void setServicioDuracion(Long servicioDuracion) {
         this.servicioDuracion = servicioDuracion;
     }
 

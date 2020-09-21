@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtils {
-    public static Date convertirStringADate(String s) throws ParseException {
-        return  new SimpleDateFormat("dd/MM/yyyy").parse(s);
+    public static Date convertirStringADate(String s, String patron) throws ParseException {
+        return  new SimpleDateFormat(patron).parse(s);
     }
 
     public static String DateAStringConFormato(Date fecha, String formato){

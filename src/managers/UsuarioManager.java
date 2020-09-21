@@ -45,7 +45,6 @@ public class UsuarioManager {
     public static void actualizarUsuario(String idUsuario, String direccion, String telefono, String celular) throws Exception {
         Map<String, Usuario> usuarios = obtenerUsuarios();
         List<String[]> listaUsuarios = new ArrayList<>();
-        List<Usuario> valoresMapUsuarios = new ArrayList<>(usuarios.values());
         Usuario usuario = usuarios.get(idUsuario);
         if( usuario == null) {
             throw new Exception("El usuario no está registrado");
@@ -60,6 +59,7 @@ public class UsuarioManager {
             usuario.setCelular(celular);
         }
         usuarios.replace(idUsuario, usuario);
+        List<Usuario> valoresMapUsuarios = new ArrayList<>(usuarios.values());
         listaUsuarios.add(new String[]{ "ID","NOMBRES","APELLIDOS","DIRECCION","TELEFONO","CELULAR"});
         for(Usuario u: valoresMapUsuarios){
             listaUsuarios.add(u.usuarioArreglo());
