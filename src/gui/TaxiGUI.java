@@ -6,10 +6,12 @@ import managers.TaxiManager;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class TaxiGUI {
+    static JFrame frame = new JFrame("Registrar taxi");
     private JPanel rootPanel;
     private JTextField placaTextField;
     private JTextField marcaTextField;
@@ -49,13 +51,17 @@ public class TaxiGUI {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Registrar taxi");
+
         frame.setContentPane(new TaxiGUI().rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
+    /**
+     * Valida la información del taxi y lo almacena en BD
+     * @throws Exception
+     */
     private void obtenerInfoTaxi() throws Exception {
         this.placa = placaTextField.getText();
         this.marca = marcaTextField.getText();
@@ -98,16 +104,22 @@ public class TaxiGUI {
         System.out.println(this.soat);
         System.out.println(this.fechaVenceTM);
 
-        String[] taxStr = {this.placa, this.marca, this.modelo, this.conductor, this.poliza, this.poliza, this.fechaVenceTM};
-        Taxi tax = new Taxi(taxStr);
-        TaxiManager.guardarTaxi(tax);
+        try{
+            String[] taxStr = {this.placa, this.marca, this.modelo, this.conductor, this.poliza, this.poliza, this.fechaVenceTM};
+            Taxi tax = new Taxi(taxStr);
+            TaxiManager.guardarTaxi(tax);
+            JOptionPane.showMessageDialog(null, "El vehículo "+this.placa+" fue registrado correctamente");
+            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+        }catch(Exception e){
+            throw new Exception("Ocurrió un error guardando la información del vehículo");
+        }
 
     }
 
     /**
      * inicializa los combos para la fecha de vencimiento de la tecnomecanica
      */
-    private void inicializarComboBoxFecha(){
+    private void inicializarComboBoxFecha() {
         this.vencTMDia.addItem("");
         for(int i = 1; i <= 31; i++){
             this.vencTMDia.addItem(i);
