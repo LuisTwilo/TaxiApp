@@ -23,6 +23,7 @@ public class TaxiGUI {
     private JComboBox vencTMMes;
     private JComboBox vencTMAnio;
     private JButton guardarButton;
+    private JButton cancelarButton;
 
     private String placa;
     private String marca;
@@ -31,6 +32,14 @@ public class TaxiGUI {
     private String poliza;
     private String soat;
     private String fechaVenceTM;
+
+    public JPanel getRootPanel() {
+        return rootPanel;
+    }
+
+    public void setRootPanel(JPanel rootPanel) {
+        this.rootPanel = rootPanel;
+    }
 
     public TaxiGUI() {
         this.modeloSpinner.setValue(2020);
@@ -43,11 +52,22 @@ public class TaxiGUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     obtenerInfoTaxi();
+
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, exception.getMessage());
                 }
             }
         });
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cerrarPanel();
+            }
+        });
+    }
+
+    private void cerrarPanel() {
+        this.getRootPanel().setVisible(false);
     }
 
     public static void main(String[] args) {
@@ -96,20 +116,13 @@ public class TaxiGUI {
 
         validarFecha(vencTMDia.getSelectedItem().toString(), vencTMMes.getSelectedItem().toString(), vencTMAnio.getSelectedItem().toString());
 
-        System.out.println(this.placa);
-        System.out.println(this.marca);
-        System.out.println(this.modelo);
-        System.out.println(this.conductor);
-        System.out.println(this.poliza);
-        System.out.println(this.soat);
-        System.out.println(this.fechaVenceTM);
-
         try{
             String[] taxStr = {this.placa, this.marca, this.modelo, this.conductor, this.poliza, this.poliza, this.fechaVenceTM};
             Taxi tax = new Taxi(taxStr);
             TaxiManager.guardarTaxi(tax);
             JOptionPane.showMessageDialog(null, "El vehículo "+this.placa+" fue registrado correctamente");
-            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            cerrarPanel();
         }catch(Exception e){
             throw new Exception("Ocurrió un error guardando la información del vehículo");
         }

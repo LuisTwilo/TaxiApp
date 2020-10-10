@@ -41,7 +41,7 @@ public class ServicioManager {
                 servicio.getUsuario().getIdUsuario(), servicio.getDireccionOrigen(), servicio.getDireccionDestino(),
                 DateUtils.DateAStringConFormato(servicio.getServicioFechaHora(), "dd/MM/yyyy hh:mm:ss"),
                 String.valueOf(servicio.getServicioDuracion()),
-                String.valueOf(servicio.getServicioValor()),  servicio.getTaxi().getPlaca(), servicio.getEstado()
+                String.valueOf(servicio.getServicioValor()),  servicio.getTaxi().getPlaca(), Servicio.estadoServicio.Pendiente.name()
         };
         servicios.add(arregloServicio);
         DBManager.escribirArchivo(servicios, "servicio", true);
@@ -70,7 +70,7 @@ public class ServicioManager {
     }
 
     public static List<Taxi> obtenerTaxisDisponibles(){
-        List<Taxi> taxis = (List<Taxi>) TaxiManager.obtenerTaxis().values();
+        List<Taxi> taxis = new ArrayList<>(TaxiManager.obtenerTaxis().values());
         List<Taxi>taxisConTMVigente = taxis.stream()
                 .filter(taxi -> taxi.getFechaVencimientoTecnoMecanica().compareTo(new Date()) > 0)
                 .collect(Collectors.toList());
@@ -82,7 +82,7 @@ public class ServicioManager {
 
     private static boolean taxiEnOperacion(Taxi taxi) {
         boolean result = false;
-        List<Servicio> servicios = (List<Servicio>) obtenerServicios().values();
+        List<Servicio> servicios = new ArrayList<>(obtenerServicios().values());
         List<Servicio> serviciosPendientes = servicios.stream()
                 .filter((servicio)-> servicio.getEstado().equals("Pendiente"))
                 .collect(Collectors.toList());

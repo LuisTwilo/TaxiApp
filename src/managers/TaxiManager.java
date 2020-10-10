@@ -37,7 +37,7 @@ public class TaxiManager {
             throw new Exception("El taxi que intenta registrar ya está en el sistema");
         }
         List<String[]> taxis = new ArrayList<>();
-        String[] arregloTaxi = {taxi.getPlaca(), taxi.getMarca(),taxi.getModelo(),taxi.getCedulaConductor(),
+        String[] arregloTaxi = {validarPlaca(taxi.getPlaca()), taxi.getMarca(),taxi.getModelo(),taxi.getCedulaConductor(),
                 taxi.getPoliza(), taxi.getSoat(), DateUtils.DateAStringConFormato(taxi.getFechaVencimientoTecnoMecanica(), "dd/MM/yyyy")};
         taxis.add(arregloTaxi);
         DBManager.escribirArchivo(taxis, "taxi", true);
@@ -57,6 +57,19 @@ public class TaxiManager {
             listaTaxis.add(t.taxiArreglo());
         }
         DBManager.escribirArchivo(listaTaxis, "taxi", false);
+    }
+
+    private static String validarPlaca(String placa) throws Exception {
+        String placaFormateada;
+        if(placa == null){
+            throw new Exception("Placa no puede estar vacío");
+        }else{
+            placaFormateada = placa.trim().replaceAll("[ .-]", "").toUpperCase();
+            if(obtenerTaxi(placaFormateada) != null){
+                throw new Exception("La placa ya está registrada en el sistema");
+            }
+        }
+        return placaFormateada;
     }
 
 }

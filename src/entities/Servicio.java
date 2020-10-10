@@ -32,7 +32,7 @@ public class Servicio {
         this.direccionDestino = servicio[3];
         this.servicioFechaHora = DateUtils.convertirStringADate(servicio[4], "dd/MM/yyyy HH:mm:ss");//
         this.taxiPlaca = TaxiManager.obtenerTaxi(servicio[7]);
-        this.estado = estadoServicio.Pendiente.name();
+        this.estado = servicio[8];
     }
 
     public String[] servicioArreglo(){
