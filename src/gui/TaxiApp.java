@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TaxiApp {
-    private JPanel panel1;
-    private JButton button1;
-    private JButton button2;
+    private JPanel panel;
+    private JButton botonAdicionarTaxi;
+    private JButton botonEliminarTaxi;
     private JButton button3;
     private JButton button4;
     private JButton button5;
@@ -20,17 +20,29 @@ public class TaxiApp {
     static JFrame frame = new JFrame("Taxi App");
 
     public static void main(String[] args) {
-        frame.setContentPane(new TaxiApp().panel1);
+        frame.setContentPane(new TaxiApp().panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
     public TaxiApp() {
-        button1.addActionListener(new ActionListener() {
+        botonAdicionarTaxi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelFuncion = new TaxiGUI().getRootPanel();
+                panelFuncion = new RegistrarTaxiPanel().getPanel();
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(panelBotones);
+                frame.getContentPane().add(panelFuncion);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+        botonEliminarTaxi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelFuncion = new EliminarTaxiPanel().getPanel();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(panelBotones);
                 frame.getContentPane().add(panelFuncion);

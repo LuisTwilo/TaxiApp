@@ -6,13 +6,11 @@ import managers.TaxiManager;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class TaxiGUI {
-    static JFrame frame = new JFrame("Registrar taxi");
-    private JPanel rootPanel;
+public class RegistrarTaxiPanel {
+    private JPanel panel;
     private JTextField placaTextField;
     private JTextField marcaTextField;
     private JSpinner modeloSpinner;
@@ -33,15 +31,15 @@ public class TaxiGUI {
     private String soat;
     private String fechaVenceTM;
 
-    public JPanel getRootPanel() {
-        return rootPanel;
+    public JPanel getPanel() {
+        return panel;
     }
 
-    public void setRootPanel(JPanel rootPanel) {
-        this.rootPanel = rootPanel;
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
     }
 
-    public TaxiGUI() {
+    public RegistrarTaxiPanel() {
         this.modeloSpinner.setValue(2020);
         this.inicializarComboBoxFecha();
         /**
@@ -67,15 +65,7 @@ public class TaxiGUI {
     }
 
     private void cerrarPanel() {
-        this.getRootPanel().setVisible(false);
-    }
-
-    public static void main(String[] args) {
-
-        frame.setContentPane(new TaxiGUI().rootPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        this.getPanel().setVisible(false);
     }
 
     /**
@@ -121,7 +111,6 @@ public class TaxiGUI {
             Taxi tax = new Taxi(taxStr);
             TaxiManager.guardarTaxi(tax);
             JOptionPane.showMessageDialog(null, "El vehículo "+this.placa+" fue registrado correctamente");
-            //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             cerrarPanel();
         }catch(Exception e){
             throw new Exception("Ocurrió un error guardando la información del vehículo");
