@@ -30,7 +30,7 @@ public class TaxiApp {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelFuncion = new TaxiGUI().getRootPanel();
+                panelFuncion = new RegistrarTaxi().getRootPanel();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(panelBotones);
                 frame.getContentPane().add(panelFuncion);
@@ -38,9 +38,16 @@ public class TaxiApp {
                 frame.setVisible(true);
             }
         });
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelFuncion = new RegistrarUsuario().getRootPanel();
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(panelBotones);
+                frame.getContentPane().add(panelFuncion);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
 }
