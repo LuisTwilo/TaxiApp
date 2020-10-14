@@ -7,8 +7,6 @@ import utils.DateUtils;
 
 import java.text.ParseException;
 import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 
 public class Servicio {
     private String idServicio;
@@ -27,7 +25,7 @@ public class Servicio {
 
     public Servicio(String[] servicio) throws ParseException {
         this.idServicio = servicio[0];
-        this.usuario = UsuarioManager.obtenerUsuario(servicio[1]);
+        this.usuario = UsuarioManager.obtenerUsuarioPorId(servicio[1]);
         this.direccionOrigen = servicio[2];
         this.direccionDestino = servicio[3];
         this.servicioFechaHora = DateUtils.convertirStringADate(servicio[4], "dd/MM/yyyy HH:mm:ss");//

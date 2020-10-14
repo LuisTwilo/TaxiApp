@@ -13,13 +13,17 @@ public class RegistrarUsuario {
     private JPanel rootPanel;
     private JButton cancelarButton;
     private JButton guardarButton;
+    private JTextField cedulaTextField;
     private JTextField nombresTextField;
     private JTextField apellidosTextField;
     private JTextField direccionTextField;
     private JTextField telefonoTextField;
     private JTextField celularTextField;
 
+
+
     private String nombres = "";
+    private String cedula = "";
     private String apellidos = "";
     private String direccion = "";
     private String telefono = "";
@@ -62,6 +66,7 @@ public class RegistrarUsuario {
 
     private void obtenerInfoUsuario() throws Exception {
         this.nombres= nombresTextField.getText().trim();
+        this.cedula = cedulaTextField.getText().trim();
         this.apellidos = apellidosTextField.getText().trim();
         this.direccion = direccionTextField.getText().trim();
         this.telefono = telefonoTextField.getText().trim();
@@ -79,7 +84,7 @@ public class RegistrarUsuario {
 
 
         try{
-            String[] usr = {UUID.randomUUID().toString(), this.nombres, this.apellidos, this.direccion, this.telefono, this.celular };
+            String[] usr = {UUID.randomUUID().toString(),this.cedula, this.nombres, this.apellidos, this.direccion, this.telefono, this.celular };
             Usuario usuario = new Usuario(usr);
             UsuarioManager.guardarUsuario(usuario);
             JOptionPane.showMessageDialog(null, "El usuario "+this.nombres+" fue registrado correctamente");

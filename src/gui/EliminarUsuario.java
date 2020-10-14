@@ -1,23 +1,23 @@
 package gui;
 
-import managers.TaxiManager;
+import managers.UsuarioManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EliminarTaxiPanel {
+public class EliminarUsuario {
     private JPanel panel;
-    private JTextField placaTextField;
+    private JTextField cedulaTextField;
     private JButton cancelarButton;
     private JButton eliminarButton;
 
-    public EliminarTaxiPanel() {
+    public EliminarUsuario() {
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    eliminarTaxi(placaTextField.getText());
+                    UsuarioManager.eliminarUsuario(cedulaTextField.getText());
                     JOptionPane.showMessageDialog(null, "El vehículo fue eliminado correctamente");
                     cerrarPanel();
                 } catch (Exception exception) {
@@ -32,18 +32,10 @@ public class EliminarTaxiPanel {
             }
         });
     }
-
-    private void cerrarPanel() { this.getPanel().setVisible(false); }
-
     public JPanel getPanel() {
         return panel;
     }
 
-    public void setPanel(JPanel panel) {
-        this.panel = panel;
-    }
+    private void cerrarPanel() { this.getPanel().setVisible(false); }
 
-    private void eliminarTaxi(String placa) throws Exception {
-        TaxiManager.eliminarTaxi(placa);
-    }
 }

@@ -10,7 +10,7 @@ public class TaxiApp {
     private JButton botonEliminarTaxi;
     private JButton button3;
     private JButton button4;
-    private JButton button5;
+    private JButton eliminarUsuarioButton;
     private JButton button6;
     private JButton button7;
     private JButton button8;
@@ -54,6 +54,17 @@ public class TaxiApp {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelFuncion = new RegistrarUsuario().getRootPanel();
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(panelBotones);
+                frame.getContentPane().add(panelFuncion);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        eliminarUsuarioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelFuncion = new EliminarUsuario().getPanel();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(panelBotones);
                 frame.getContentPane().add(panelFuncion);

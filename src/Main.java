@@ -21,14 +21,14 @@ public class Main {
         Servicio ser = new Servicio(serString);
         ServicioManager.guardarServicio(ser);*/
         //ServicioManager.actualizarServicio("763e89b0-4a13-45cc-94b4-785c2725d42e", "Cumplido");
-        //UsuarioManager.eliminarUsuario("9675e7b5-25e1-477a-923c-98b0b9937082");
-        String[] taxStr = {"Des123", "kiwi", "2008", "124", "55896", "1586", "11/08/2020"};
-        Taxi tax = new Taxi(taxStr);
-        TaxiManager.guardarTaxi(tax);
-        /*String[] user = {UUID.randomUUID().toString(),"oso josé", "londoño larrarte","el dorado", "1234567", "3001234569"};
+        //UsuarioManager.eliminarUsuario("1152685632");
+        //String[] taxStr = {"Des123", "kiwi", "2008", "124", "55896", "1586", "11/08/2020"};
+        //Taxi tax = new Taxi(taxStr);
+        //TaxiManager.guardarTaxi(tax);
+        /*String[] user = {UUID.randomUUID().toString(),"1152685632","oso josé", "londoño larrarte","el dorado", "1234567", "3001234569"};
         Usuario userObj = new Usuario(user);
         UsuarioManager.guardarUsuario(userObj);*/
-        //UsuarioManager.actualizarUsuario("9675e7b5-25e1-477a-923c-98b0b9937082", null, "4152", null);
+        //UsuarioManager.actualizarUsuario("", "1152685632",null, "4152", null);
         //TaxiManager.eliminarTaxi("ABC123");
         //List<Taxi> disponibles = obtenerTaxisDisponibles();
         //for(Taxi t : disponibles){

@@ -3,7 +3,6 @@ package managers;
 import db.DBManager;
 import entities.Servicio;
 import entities.Taxi;
-import entities.Usuario;
 import utils.DateUtils;
 
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ServicioManager {
     public static Map<String, Servicio> obtenerServicios(){
@@ -33,7 +31,7 @@ public class ServicioManager {
     }
 
     public static void guardarServicio(Servicio servicio) throws Exception {
-        if(UsuarioManager.obtenerUsuario(servicio.getUsuario().getIdUsuario().toString())== null){
+        if(UsuarioManager.obtenerUsuarioPorId(servicio.getUsuario().getIdUsuario().toString())== null){
             throw new Exception("El usuario no se encuentra registrado");
         }
         List<String[]> servicios = new ArrayList<>();

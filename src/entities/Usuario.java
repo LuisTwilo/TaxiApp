@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Usuario{
     private String idUsuario;
+    private String cedula;
     private String nombres;
     private String apellidos;
     private String direccion;
@@ -15,17 +16,18 @@ public class Usuario{
 
     public Usuario(String[] usuario) {
         this.idUsuario = usuario[0] ;
-        this.nombres =  usuario[1];
-        this.apellidos =  usuario[2];
-        this.direccion = usuario[3];
-        this.telefono = usuario[4];
-        this.celular = usuario[5];
+        this.cedula = usuario[1];
+        this.nombres =  usuario[2];
+        this.apellidos =  usuario[3];
+        this.direccion = usuario[4];
+        this.telefono = usuario[5];
+        this.celular = usuario[6];
     }
 
     public Usuario(){}
 
     public String[] usuarioArreglo(){
-        String[] usuario = {this.idUsuario, this.nombres, this.apellidos, this.direccion, this.telefono, this.celular};
+        String[] usuario = {this.idUsuario,this.cedula, this.nombres, this.apellidos, this.direccion, this.telefono, this.celular};
         return usuario;
     }
 
@@ -75,5 +77,11 @@ public class Usuario{
         this.celular = celular;
     }
 
+    public String getCedula() {
+        return cedula;
+    }
 
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
 }
