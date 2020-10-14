@@ -2,7 +2,6 @@ package managers;
 
 import db.DBManager;
 import entities.Taxi;
-import entities.Usuario;
 import utils.DateUtils;
 
 import java.io.IOException;

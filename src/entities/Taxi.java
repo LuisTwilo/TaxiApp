@@ -26,7 +26,7 @@ public class Taxi {
     }
 
     public String[] taxiArreglo(){
-        String[] taxi = {this.placa, this.marca, this.modelo, this.cedulaConductor, this.poliza, this.soat, this.fechaVencimientoTecnoMecanica.toString()};
+        String[] taxi = {this.placa, this.marca, this.modelo, this.cedulaConductor, this.poliza, this.soat, DateUtils.DateAStringConFormato(this.fechaVencimientoTecnoMecanica, "dd/MM/yyyy")};
         return taxi;
     }
 
