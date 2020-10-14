@@ -18,7 +18,7 @@ public class EliminarUsuario {
             public void actionPerformed(ActionEvent e) {
                 try {
                     UsuarioManager.eliminarUsuario(cedulaTextField.getText());
-                    JOptionPane.showMessageDialog(null, "El vehículo fue eliminado correctamente");
+                    JOptionPane.showMessageDialog(null, "El usuario fue eliminado correctamente");
                     cerrarPanel();
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, exception.getMessage());

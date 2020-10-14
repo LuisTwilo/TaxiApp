@@ -1,15 +1,20 @@
 package gui;
 
+import entities.Usuario;
+import managers.UsuarioManager;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 public class TaxiApp {
+    private Map<String, Usuario> usuarios;
     private JPanel panel;
     private JButton botonAdicionarTaxi;
     private JButton botonEliminarTaxi;
-    private JButton button3;
-    private JButton button4;
+    private JButton botonRegistrarUsuario;
+    private JButton botonVerUsuarios;
     private JButton eliminarUsuarioButton;
     private JButton button6;
     private JButton button7;
@@ -26,7 +31,10 @@ public class TaxiApp {
         frame.setVisible(true);
     }
 
+
     public TaxiApp() {
+        //Se precarga la información de los usuarios
+        this.usuarios = UsuarioManager.obtenerUsuariosPorcedula();
         botonAdicionarTaxi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -50,13 +58,25 @@ public class TaxiApp {
                 frame.setVisible(true);
             }
         });
-        button3.addActionListener(new ActionListener() {
+        botonRegistrarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelFuncion = new RegistrarUsuario().getRootPanel();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(panelBotones);
                 frame.getContentPane().add(panelFuncion);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        botonVerUsuarios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                VerUsuariosPanel panel = new VerUsuariosPanel(usuarios);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(panelBotones);
+                frame.getContentPane().add(panel.getScrollPane());
                 frame.pack();
                 frame.setVisible(true);
             }
