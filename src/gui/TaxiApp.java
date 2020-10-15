@@ -16,7 +16,7 @@ public class TaxiApp {
     private JButton botonRegistrarUsuario;
     private JButton botonVerUsuarios;
     private JButton eliminarUsuarioButton;
-    private JButton button6;
+    private JButton editarUsuarioButton;
     private JButton registrarServicioButton;
     private JButton button8;
     private JPanel panelFuncion;
@@ -96,6 +96,17 @@ public class TaxiApp {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelFuncion = new RegistrarServicioPanel().getPanel();
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(panelBotones);
+                frame.getContentPane().add(panelFuncion);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        editarUsuarioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelFuncion = new EditarUsuario().getPanel();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(panelBotones);
                 frame.getContentPane().add(panelFuncion);
