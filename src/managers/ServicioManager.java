@@ -45,9 +45,11 @@ public class ServicioManager {
 
         List<Servicio> servicios = obtenerServiciosPorUsuario().get(idUsuario);
         List<Servicio> serviciosPendientes = new ArrayList<>();
-        serviciosPendientes = servicios.stream()
-               .filter(s -> s.getEstado().equals(Servicio.estadoServicio.Pendiente.toString()))
-               .collect(Collectors.toList());
+        if(servicios != null){
+            serviciosPendientes = servicios.stream()
+                    .filter(s -> s.getEstado().equals(Servicio.estadoServicio.Pendiente.toString()))
+                    .collect(Collectors.toList());
+        }
         return serviciosPendientes;
     }
 

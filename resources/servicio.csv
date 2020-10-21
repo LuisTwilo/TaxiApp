@@ -1,3 +1,6 @@
 ID,ID_USUARIO,ORIGEN,DESTINO,FECHA_SERVICIO,DURACION,VALOR,TAXI,ESTADO
-d5aa484c-0db4-4ce8-8006-efc6ee5c4b48,067a9f0e-f879-4fe2-8728-30a35e7acb14,mi casa  y solo mía,WB,20/10/2020 20:50:45,null,null,ABC123,Cancelado
-a416a1a1-1994-40ac-8ea3-732ee8ee2fad,067a9f0e-f879-4fe2-8728-30a35e7acb14,mi casa  y solo mía,her,20/10/2020 20:54:39,null,null,ABC456,Pendiente
+058c805b-b438-4dee-bd36-88b7693b348c,60bdc927-4b44-435f-a87e-7e0039a064a4,mi casa,guardería,20/10/2020 22:50:34,null,null,ABC123,Cumplido
+2c430110-3992-4cad-bd0a-5145c6d12ce8,60bdc927-4b44-435f-a87e-7e0039a064a4,mi casa,guarderia,20/10/2020 22:54:11,null,null,ASD123,Cumplido
+3d749ac9-7a9d-4481-949e-b0eeffc763f3,60bdc927-4b44-435f-a87e-7e0039a064a4,mi casa,veterinario,20/10/2020 22:55:19,null,null,ABC456,Cancelado
+19679175-3501-45ff-8c53-04b8a9ce9b7a,60bdc927-4b44-435f-a87e-7e0039a064a4,mi casa,vet,20/10/2020 22:58:20,null,null,ABC123,Cancelado
+0720a46c-bd04-46d5-8047-c290c4cc1fc6,60bdc927-4b44-435f-a87e-7e0039a064a4,mi casa,mi otra casa,20/10/2020 23:00:27,null,null,ABC123,Pendiente
