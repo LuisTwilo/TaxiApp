@@ -7,8 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class DBManager {
-    private static String ruta = "C:\\Users\\luis\\Documents\\TaxiApp\\resources";
-
+    private static String ruta = System.getProperty("user.dir")+"\\resources";
     public static List<String[]> leerArchivo(String archivo) throws IOException {
         String rutaArchivo = ruta +"\\"+archivo+".csv";
         File archivoCSV = new File(rutaArchivo);
@@ -61,3 +60,4 @@ public class DBManager {
 
     }
 }
+

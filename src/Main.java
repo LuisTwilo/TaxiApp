@@ -17,6 +17,8 @@ import static managers.ServicioManager.obtenerTaxisDisponibles;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        String path = System.getProperty("user.dir");
+        System.out.println("Working Directory = " + path);
         /*String[] serString = {UUID.randomUUID().toString(),"423c9181-d422-4900-b534-06d7c2cec93f", "callejón diagon", "av siempre viva", DateUtils.DateAStringConFormato(new Date(), "dd/MM/yyyy HH:mm:ss"),"","", "ABC123"};
         Servicio ser = new Servicio(serString);
         ServicioManager.guardarServicio(ser);*/

@@ -1,2 +1,3 @@
 ID,ID_USUARIO,ORIGEN,DESTINO,FECHA_SERVICIO,DURACION,VALOR,TAXI,ESTADO
-8ba81816-fccd-466a-86ae-b9c41457f4a5,0d2badd7-9f01-4024-b76f-7f133dd49875,mi casa tu casa,WB,17/10/2020 18:36:56,0,0.0,QER236,Cumplido
+d5aa484c-0db4-4ce8-8006-efc6ee5c4b48,067a9f0e-f879-4fe2-8728-30a35e7acb14,mi casa  y solo mía,WB,20/10/2020 20:50:45,null,null,ABC123,Cancelado
+a416a1a1-1994-40ac-8ea3-732ee8ee2fad,067a9f0e-f879-4fe2-8728-30a35e7acb14,mi casa  y solo mía,her,20/10/2020 20:54:39,null,null,ABC456,Pendiente
