@@ -58,17 +58,24 @@ public class TaxiManager {
         DBManager.escribirArchivo(listaTaxis, "taxi", false);
     }
 
-    private static String validarPlaca(String placa) throws Exception {
+    public static String validarPlaca(String placa) throws Exception {
         String placaFormateada;
         if(placa == null){
             throw new Exception("Placa no puede estar vacío");
         }else{
-            placaFormateada = placa.trim().replaceAll("[ .-]", "").toUpperCase();
+            placaFormateada = formatearPlaca(placa);
+            if(!placaFormateada.matches("[A-Z]{3}[0-9]{3}")){
+                throw new Exception("La placa no es válida");
+            }
             if(obtenerTaxi(placaFormateada) != null){
                 throw new Exception("La placa ya está registrada en el sistema");
             }
         }
         return placaFormateada;
+    }
+
+    public static String formatearPlaca(String placa){
+        return placa.trim().replaceAll("[ .-]", "").toUpperCase();
     }
 
 }

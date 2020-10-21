@@ -43,10 +43,14 @@ public class RegistrarServicioPanel {
             @Override
             public void focusLost(FocusEvent e) {
                 super.focusLost(e);
-                Usuario usuario = UsuarioManager.obtenerUsuarioPorcedula(usuarioTextField.getText());
-                nombreUsuarioTextField.setText(usuario.getNombres() + " " + usuario.getApellidos());
-                origenTextField.setText(usuario.getDireccion());
-                idUsuario = usuario.getIdUsuario();
+                try{
+                    Usuario usuario = UsuarioManager.obtenerUsuarioPorcedula(usuarioTextField.getText());
+                    nombreUsuarioTextField.setText(usuario.getNombres() + " " + usuario.getApellidos());
+                    origenTextField.setText(usuario.getDireccion());
+                    idUsuario = usuario.getIdUsuario();
+                }catch (Exception exception){
+                    JOptionPane.showMessageDialog(null, exception.getMessage());
+                }
             }
         });
         cancelarButton.addActionListener(new ActionListener() {

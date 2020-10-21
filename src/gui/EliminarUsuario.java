@@ -1,5 +1,7 @@
 package gui;
 
+import entities.Usuario;
+import managers.ServicioManager;
 import managers.UsuarioManager;
 
 import javax.swing.*;
@@ -17,6 +19,11 @@ public class EliminarUsuario {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    Usuario usuario = UsuarioManager.obtenerUsuarioPorcedula(cedulaTextField.getText());
+                    if (!ServicioManager.obtenerServiciosVigenteUsuario(usuario.getIdUsuario()).isEmpty()){
+                        JOptionPane.showMessageDialog(null, "El usuario tiene servicios pendientes");
+                        cerrarPanel();
+                    }
                     UsuarioManager.eliminarUsuario(cedulaTextField.getText());
                     JOptionPane.showMessageDialog(null, "El usuario fue eliminado correctamente");
                     cerrarPanel();

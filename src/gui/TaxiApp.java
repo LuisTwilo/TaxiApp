@@ -15,12 +15,13 @@ public class TaxiApp {
     private JButton botonEliminarTaxi;
     private JButton botonRegistrarUsuario;
     private JButton botonVerUsuarios;
-    private JButton eliminarUsuarioButton;
+    private JButton botonEliminarUsuario;
     private JButton editarUsuarioButton;
-    private JButton registrarServicioButton;
-    private JButton button8;
+    private JButton botonRegistrarServicio;
+    private JButton botonGestionarServicio;
     private JPanel panelFuncion;
     private JPanel panelBotones;
+    private JButton botonEditarUsuario;
 
     static JFrame frame = new JFrame("Taxi App");
 
@@ -81,7 +82,7 @@ public class TaxiApp {
                 frame.setVisible(true);
             }
         });
-        eliminarUsuarioButton.addActionListener(new ActionListener() {
+        botonEliminarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelFuncion = new EliminarUsuario().getPanel();
@@ -92,7 +93,7 @@ public class TaxiApp {
                 frame.setVisible(true);
             }
         });
-        registrarServicioButton.addActionListener(new ActionListener() {
+        botonRegistrarServicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelFuncion = new RegistrarServicioPanel().getPanel();
@@ -103,10 +104,21 @@ public class TaxiApp {
                 frame.setVisible(true);
             }
         });
-        editarUsuarioButton.addActionListener(new ActionListener() {
+        botonEditarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelFuncion = new EditarUsuario().getPanel();
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(panelBotones);
+                frame.getContentPane().add(panelFuncion);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        botonGestionarServicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelFuncion = new GestionarServicioPanel().getPanel();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(panelBotones);
                 frame.getContentPane().add(panelFuncion);

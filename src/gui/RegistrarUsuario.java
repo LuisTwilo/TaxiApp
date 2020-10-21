@@ -87,7 +87,7 @@ public class RegistrarUsuario {
             String[] usr = {UUID.randomUUID().toString(),this.cedula, this.nombres, this.apellidos, this.direccion, this.telefono, this.celular };
             Usuario usuario = new Usuario(usr);
             UsuarioManager.guardarUsuario(usuario);
-            JOptionPane.showMessageDialog(null, "El usuario "+this.nombres+" fue registrado correctamente");
+            JOptionPane.showMessageDialog(null, "El usuario "+this.nombres+" "+this.apellidos+" fue registrado correctamente");
             cerrarPanel();
         }catch (Exception e){
             throw new Exception("Ocurrió un error guardando la información del usuario");

@@ -1,5 +1,6 @@
 package gui;
 
+import managers.ServicioManager;
 import managers.TaxiManager;
 
 import javax.swing.*;
@@ -16,8 +17,13 @@ public class EliminarTaxiPanel {
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String placaFormateada = TaxiManager.formatearPlaca(placaTextField.getText());
                 try {
-                    eliminarTaxi(placaTextField.getText());
+                    if (ServicioManager.taxiEnOperacion(placaFormateada)){
+                        JOptionPane.showMessageDialog(null, "El taxi tiene servicios pendientes");
+                        cerrarPanel();
+                    }
+                    eliminarTaxi(placaFormateada);
                     JOptionPane.showMessageDialog(null, "El vehículo fue eliminado correctamente");
                     cerrarPanel();
                 } catch (Exception exception) {
